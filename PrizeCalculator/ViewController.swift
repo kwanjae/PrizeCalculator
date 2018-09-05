@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var lLabel: UILabel!
     @IBOutlet weak var mLabel: UILabel!
     @IBOutlet weak var sLabel: UILabel!
+    @IBOutlet weak var lMoney: UILabel!
+    @IBOutlet weak var mMoney: UILabel!
+    @IBOutlet weak var sMoney: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
     override func viewDidLoad() {
@@ -32,17 +35,23 @@ class ViewController: UIViewController {
         let num = Int(sender.value)
         lLabel.text = String(num)
         
+        lMoney.text = String(num*5500)
+        
         calculatePrize()
     }
     @IBAction func mStepperChanged(_ sender: UIStepper) {
         let num = Int(sender.value)
         mLabel.text = String(num)
         
+        mMoney.text = String(num*1500)
+        
         calculatePrize()
     }
     @IBAction func sStepperChanged(_ sender: UIStepper) {
         let num = Int(sender.value)
         sLabel.text = String(num)
+        
+        sMoney.text = String(num*1000)
         
         calculatePrize()
     }
