@@ -31,11 +31,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func lStepperChanged(_ sender: UIStepper) {
         let num = Int(sender.value)
         lLabel.text = String(num)
         
-        lMoney.text = String(num*5500)
+        lMoney.text = moneyFormat(num*5500)
         
         calculatePrize()
     }
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
         let num = Int(sender.value)
         mLabel.text = String(num)
         
-        mMoney.text = String(num*1500)
+        mMoney.text = moneyFormat(num*1500)
         
         calculatePrize()
     }
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
         let num = Int(sender.value)
         sLabel.text = String(num)
         
-        sMoney.text = String(num*1000)
+        sMoney.text = moneyFormat(num*1000)
         
         calculatePrize()
     }
@@ -63,7 +64,15 @@ class ViewController: UIViewController {
         
         let answerNum = (lnum*5500) + (mnum*1500) + (snum*1000)
         
-        answerLabel.text = String(answerNum)
+        answerLabel.text = moneyFormat(answerNum)
+    }
+    
+    private func moneyFormat (_ num: Int) -> String {
+        let money = NSNumber(value: num)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: money)!
     }
 }
 
